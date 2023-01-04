@@ -18,6 +18,24 @@ export class App extends Component {
     filter: '',
   }
 
+  //Виполняется каждій раз при первой загрузке страниці
+  //Можна повесить слушателя на window
+  componentDidMount() {
+    const contactsFromLS = JSON.parse(localStorage.getItem('contacts'));
+    if (contactsFromLS) {
+      this.setState({ contacts: contactsFromLS });
+    }
+  }
+
+  //Віполняется каждій раз при обновлении стейта до рендера
+  componentDidUpdate(prevState) {
+
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('Обновились контакті')
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
   }
@@ -47,8 +65,10 @@ export class App extends Component {
     
     return contacts.filter(n => n.name.toLowerCase().includes(normalizedFilter));
   }
+  
 
   render() {
+    console.log('App render');
     const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
     
