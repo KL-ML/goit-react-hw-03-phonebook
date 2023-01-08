@@ -28,7 +28,7 @@ export class App extends Component {
   }
 
   //Віполняется каждій раз при обновлении стейта до рендера
-  componentDidUpdate(prevState) {
+  componentDidUpdate(_, prevState) {
 
     if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
