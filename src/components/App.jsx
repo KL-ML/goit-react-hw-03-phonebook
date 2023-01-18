@@ -88,8 +88,14 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler}/>
         <h2>Contacts</h2>
-        <Filter value={filter} onChange={this.changeFilter}/>
-        <ContactList contacts={visibleContacts} onDeleteContact={this.deleteContact}/>
+        <Filter
+          value={filter}
+          onChange={this.changeFilter}
+        />
+        <ContactList
+          contacts={visibleContacts}
+          onDeleteContact={this.deleteContact}
+        />
       </Box>
     ); 
   }
