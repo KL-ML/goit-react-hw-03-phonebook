@@ -52,7 +52,6 @@ export class App extends Component {
   };
 
   deleteContact = (contactId) => {
-    console.log('contactId:', contactId);
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId)
     }))
@@ -67,7 +66,6 @@ export class App extends Component {
   
 
   render() {
-    console.log('App render');
     const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
     
